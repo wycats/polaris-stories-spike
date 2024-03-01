@@ -1,5 +1,4 @@
 import Application from '@ember/application';
-
 import loadInitializers from 'ember-load-initializers';
 import Resolver from 'ember-resolver';
 import config from 'polaris-starter/config/environment';

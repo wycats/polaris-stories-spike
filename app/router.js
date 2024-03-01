@@ -1,5 +1,4 @@
 import EmberRouter from '@ember/routing/router';
-
 import config from 'polaris-starter/config/environment';
 
 export default class Router extends EmberRouter {
@@ -7,4 +6,9 @@ export default class Router extends EmberRouter {
   rootURL = config.rootURL;
 }
 
-Router.map(function () {});
+Router.map(function () {
+  this.route('stories', { path: '__stories__' }, function () {
+    this.route('story', { path: ':story' });
+    this.route('index', { path: '' });
+  });
+});

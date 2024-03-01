@@ -8,10 +8,10 @@ const usDateTime = new Intl.DateTimeFormat('en-US', {
 });
 
 export const Clock = resource(({ on }) => {
-  let time = cell(new Date());
-  let interval = setInterval(() => (time.current = new Date()), 1000);
+  const time = cell(new Date());
+  const interval = setInterval(() => (time.current = new Date()), 1000);
 
-  on.cleanup(() => clearInterval(interval));
+  on.cleanup(() => void clearInterval(interval));
 
   return () => usDateTime.format(time.current);
 });

@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 import { resolver, hbs, scripts, templateTag, optimizeDeps, compatPrebuild } from "@embroider/vite";
 import { resolve } from "path";
 import { babel } from "@rollup/plugin-babel";
-
 const root = "node_modules/.embroider/rewritten-app";
 
 export default defineConfig({

@@ -1,19 +1,58 @@
+import Component from '@glimmer/component';
 import { Clock } from './clock';
 import { Excite } from './excite';
+import logElement from 'polaris-starter/modifiers/log-element';
+import { tracked } from '@glimmer/tracking';
+import { on } from '@ember/modifier';
+import ElementSet from 'polaris-starter/services/element-set';
+import { service } from 'ember-polaris-service';
+import { TrackedArray } from 'tracked-built-ins';
 
-const Welcome = <template>
-  <Header />
-  <main>
-    <div class="title">
-      <h2>Learning Resources</h2>
-      <aside>The time is <span>{{Clock}}</span></aside>
-    </div>
+class Welcome extends Component {
+  list: string[] = new TrackedArray();
+  elementSet = service(this, ElementSet);
 
-    <Links />
+  push = () => {
+    this.list.push(crypto.randomUUID());
+  };
 
-    <Footer />
-  </main>
-</template>;
+  pop = () => {
+    this.list.pop();
+  };
+
+  <template>
+    <Excite />
+    <Header />
+    <main>
+      <button type="button" {{on "click" this.push}}>
+        Push Item
+      </button>
+
+      <button type="button" {{on "click" this.pop}}>
+        Pop Item
+      </button>
+
+      <h2>Local IDs</h2>
+      {{#each this.list as |id|}}
+        <div {{logElement id=id}}>{{id}}</div>
+      {{/each}}
+
+      <h2>Service IDs</h2>
+      {{#each this.elementSet as |id|}}
+        <div>{{id}}</div>
+      {{/each}}
+
+      <div class="title">
+        <h2>Learning Resources</h2>
+        <aside>The time is <span>{{Clock}}</span></aside>
+      </div>
+
+      <Links />
+
+      <Footer />
+    </main>
+  </template>
+}
 
 export default Welcome;
 

@@ -14,5 +14,10 @@
     "markdown",
     "glimmer-js",
     "glimmer-ts"
-  ]
+  ],
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.formatDocument": "always",
+    "source.fixAll": "always",
+  }
 }

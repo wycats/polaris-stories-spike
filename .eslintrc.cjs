@@ -3,16 +3,25 @@
 module.exports = {
   overrides: [
     {
-      files: ['**/*.{js,ts}'],
+      files: ['**/*.{js,ts,mts}'],
       plugins: ['ember'],
       parser: '@typescript-eslint/parser',
-      extends: ['eslint:recommended', 'plugin:ember/recommended'],
+      extends: [
+        'eslint:recommended',
+        'plugin:ember/recommended',
+        'plugin:@starbeam-dev/library:recommended',
+      ],
     },
     {
       files: ['**/*.gts'],
       parser: 'ember-eslint-parser',
       plugins: ['ember'],
-      extends: ['eslint:recommended', 'plugin:ember/recommended', 'plugin:ember/recommended-gts'],
+      extends: [
+        'eslint:recommended',
+        'plugin:ember/recommended',
+        'plugin:ember/recommended-gts',
+        'plugin:@starbeam-dev/library:recommended',
+      ],
     },
     {
       files: ['**/*.gjs'],
@@ -31,7 +40,12 @@ module.exports = {
       files: ['tests/**/*-test.{gjs,gts}'],
       parser: 'ember-eslint-parser',
       plugins: ['ember'],
-      extends: ['eslint:recommended', 'plugin:ember/recommended', 'plugin:ember/recommended-gts'],
+      extends: [
+        'eslint:recommended',
+        'plugin:ember/recommended',
+        'plugin:ember/recommended-gts',
+        'plugin:@starbeam-dev/library:recommended',
+      ],
     },
     // node files
     {
@@ -54,4 +68,6 @@ module.exports = {
       extends: ['plugin:n/recommended'],
     },
   ],
+
+  extends: ['plugin:storybook/recommended', 'plugin:storybook/recommended'],
 };
